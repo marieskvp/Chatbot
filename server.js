@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
@@ -6,7 +7,7 @@ const pdfParse = require('pdf-parse'); // For parsing PDF files
 const { GoogleGenerativeAI } = require("@google/generative-ai"); // Gemini API client
 
 const app = express();
-const genAI = new GoogleGenerativeAI('AIzaSyBYPVBpT2AAwPOFvU1_Im1qzde740y3acw'); // Replace with your API key
+const genAI = new GoogleGenerativeAI(process.env.API_KEY); // Replace with your API key
 
 // Set up storage for file uploads
 const storage = multer.diskStorage({
